@@ -1,5 +1,5 @@
 /* LOAD DATA */
-d3.csv('../Data/MoMAArtists.csv', d3.autoType)
+d3.csv('Data/MoMAArtists.csv', d3.autoType)
   .then(MoMAArtists => {
     // console.log('MoMA artists', MoMAArtists)
     
