@@ -34,171 +34,171 @@ d3.csv('Data/MoMAArtists.csv', d3.autoType)
 const top30Names = nameGender.filter(function(d) {return d.value >= 50})
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                    //
-//                                                Gender treemap                                                      //
-//                                                                                                                    //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //                                                                                                                    //
+// //                                                Gender treemap                                                      //
+// //                                                                                                                    //
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// *************************************
-// Group by gender
-// *************************************
+// // *************************************
+// // Group by gender
+// // *************************************
 
-const groupedByGender = d3.group(noNullGender, d => d.Gender)
-console.log("groupedByGender:", groupedByGender)
+// const groupedByGender = d3.group(noNullGender, d => d.Gender)
+// console.log("groupedByGender:", groupedByGender)
 
-// ***********************************************
-// Create hierarchy
-// then sort by Gender count in descending order
-// ***********************************************
+// // ***********************************************
+// // Create hierarchy
+// // then sort by Gender count in descending order
+// // ***********************************************
 
-const hierarchyGroup = d3.hierarchy(groupedByGender)
-    .count(d => d.value)
-    .sort((a,b) => b.value - a.value)
-    console.log("hierarchyGroup:", hierarchyGroup)
+// const hierarchyGroup = d3.hierarchy(groupedByGender)
+//     .count(d => d.value)
+//     .sort((a,b) => b.value - a.value)
+//     console.log("hierarchyGroup:", hierarchyGroup)
 
-const treemap = d3.treemap()
-.size([650, 400])
-.round(true)
-
-
-const treemapRoot = treemap(hierarchyGroup)
-console.log('treemapRoot.children', treemapRoot.children)
-
-// *************************************
-// Color scale
-// *************************************
-const treeMapcolorScale = d3.scaleOrdinal()
-        .domain(treemapRoot.children)
-        .range(["#D3D0CB","#E2C044","#587B7F"])  // color palette (middle three colors) https://coolors.co/palette/393e41-d3d0cb-e2c044-587b7f-1e2019
-
-// *************************************
-// Treemap chart
-// *************************************
-const treemapChart = d3.select("#gender-map-chart")
-  .append("svg")
-  .attr("viewBox", `0 0 ${width*1.2} ${height*0.4}`)
-  .attr("preserveAspectRatio", "xMidYMid meet")
-  .classed("gender-map", true)
-  .style("background-color", "#ffffff")
+// const treemap = d3.treemap()
+// .size([650, 400])
+// .round(true)
 
 
-const g = treemapChart.append('g')
-  .attr('class', 'treemap-container')
+// const treemapRoot = treemap(hierarchyGroup)
+// console.log('treemapRoot.children', treemapRoot.children)
 
-const gender = g.selectAll('g.gender')
-.data(treemapRoot.children)
-.join('g')
-.attr('class', 'gender')
-.attr('transform', d => `translate(${ d.x0 },${ d.y0 })`)
-.style('font-size', 14)
-// console.log('data[1]', treemapRoot.children)
+// // *************************************
+// // Color scale
+// // *************************************
+// const treeMapcolorScale = d3.scaleOrdinal()
+//         .domain(treemapRoot.children)
+//         .range(["#D3D0CB","#E2C044","#587B7F"])  // color palette (middle three colors) https://coolors.co/palette/393e41-d3d0cb-e2c044-587b7f-1e2019
 
-gender.append('rect')
-.attr('fill', d => treeMapcolorScale(d))
-.attr('stroke', 'white')
-.attr('opacity', 0.7)
-// the width is the right edge position - the left edge position
-.attr('width', d => d.x1 - d.x0)
-// same for height, but bottom - top
-.attr('height', d => d.y1 - d.y0)
-// make corners rounded
-.attr('rx', 3)
-.attr('ry', 3)
+// // *************************************
+// // Treemap chart
+// // *************************************
+// const treemapChart = d3.select("#gender-map-chart")
+//   .append("svg")
+//   .attr("viewBox", `0 0 ${width*1.2} ${height*0.4}`)
+//   .attr("preserveAspectRatio", "xMidYMid meet")
+//   .classed("gender-map", true)
+//   .style("background-color", "#ffffff")
 
-gender.each((d, i, arr) => {
 
-// The current leaf element
-const current = arr[i]
+// const g = treemapChart.append('g')
+//   .attr('class', 'treemap-container')
 
-const left = d.x0,
-right = d.x1,
-// calculate its width from the data
-width = right - left,
-top = d.y0,
-bottom = d.y1,
-// calculate its height from the data
-height = d.y1 - d.y0
+// const gender = g.selectAll('g.gender')
+// .data(treemapRoot.children)
+// .join('g')
+// .attr('class', 'gender')
+// .attr('transform', d => `translate(${ d.x0 },${ d.y0 })`)
+// .style('font-size', 14)
+// // console.log('data[1]', treemapRoot.children)
 
-// too small to show text
-const tooSmall = width < 34 || height < 25
+// gender.append('rect')
+// .attr('fill', d => treeMapcolorScale(d))
+// .attr('stroke', 'white')
+// .attr('opacity', 0.7)
+// // the width is the right edge position - the left edge position
+// .attr('width', d => d.x1 - d.x0)
+// // same for height, but bottom - top
+// .attr('height', d => d.y1 - d.y0)
+// // make corners rounded
+// .attr('rx', 3)
+// .attr('ry', 3)
 
-// and append the text (you saw something similar with the pie chart (day 6)
-const text = d3.select( current ).append('text')
-// If it's too small, don't show the text
-.attr('opacity', tooSmall ? 0 : 0.9)
-.selectAll('tspan')
-.data(d => [ d.data[0], d.value.toLocaleString() ])
-.join('tspan')
-.attr('x', 3)
-.attr('y', (d,i) => i ? '2.5em' : '1.15em')
-.text(d => d)
-.style("font-weight", "bold")
-})
+// gender.each((d, i, arr) => {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                    //
-//                                                  Bar chart                                                         //
-//                                                                                                                    //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// // The current leaf element
+// const current = arr[i]
 
-// **************
-// Scales
-//**************
+// const left = d.x0,
+// right = d.x1,
+// // calculate its width from the data
+// width = right - left,
+// top = d.y0,
+// bottom = d.y1,
+// // calculate its height from the data
+// height = d.y1 - d.y0
 
-const xScale = d3.scaleBand()
-                .domain(nameGender.map(d => d.firstName))
-                .range([margin.left, (width + margin.left + margin.right)])
-                .padding(0.1);
+// // too small to show text
+// const tooSmall = width < 34 || height < 25
 
-const yScale = d3.scaleLinear()
-                .domain([0, d3.max(nameGender, d => d.value)])
-                .range([height, 0]);
+// // and append the text (you saw something similar with the pie chart (day 6)
+// const text = d3.select( current ).append('text')
+// // If it's too small, don't show the text
+// .attr('opacity', tooSmall ? 0 : 0.9)
+// .selectAll('tspan')
+// .data(d => [ d.data[0], d.value.toLocaleString() ])
+// .join('tspan')
+// .attr('x', 3)
+// .attr('y', (d,i) => i ? '2.5em' : '1.15em')
+// .text(d => d)
+// .style("font-weight", "bold")
+// })
 
-const barColor = d3.scaleOrdinal()
-                .domain(["Male", "Female", "Non-Binary"])
-                .range(["#F6BD60","#F5CAC3","#F28482"]); // color palette https://coolors.co/palette/f6bd60-f7ede2-f5cac3-84a59d-f28482
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //                                                                                                                    //
+// //                                                  Bar chart                                                         //
+// //                                                                                                                    //
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// // **************
+// // Scales
+// //**************
+
+// const xScale = d3.scaleBand()
+//                 .domain(nameGender.map(d => d.firstName))
+//                 .range([margin.left, (width + margin.left + margin.right)])
+//                 .padding(0.1);
+
+// const yScale = d3.scaleLinear()
+//                 .domain([0, d3.max(nameGender, d => d.value)])
+//                 .range([height, 0]);
+
+// const barColor = d3.scaleOrdinal()
+//                 .domain(["Male", "Female", "Non-Binary"])
+//                 .range(["#F6BD60","#F5CAC3","#F28482"]); // color palette https://coolors.co/palette/f6bd60-f7ede2-f5cac3-84a59d-f28482
               
 
 
-const barChart = d3.select("#bar-chart")
-                  .append("svg")
-                  .attr("width", width + margin.left + margin.right)
-                  .attr("height", height + margin.top + margin.bottom)
+// const barChart = d3.select("#bar-chart")
+//                   .append("svg")
+//                   .attr("width", width + margin.left + margin.right)
+//                   .attr("height", height + margin.top + margin.bottom)
 
 
-// **************
-// X-axis
-// **************
+// // **************
+// // X-axis
+// // **************
 
-barChart.append("g")
-        .attr("calss", "x-axis")
-        .style("transform", `translate(0,${width}px)`)
-        .call(d3.axisBottom(xScale))
+// barChart.append("g")
+//         .attr("calss", "x-axis")
+//         .style("transform", `translate(0,${width}px)`)
+//         .call(d3.axisBottom(xScale))
 
-// **************
-// Y-axis
-// **************
+// // **************
+// // Y-axis
+// // **************
 
-barChart.append("g")
-        .attr("class", "y-axis")
-        .style("transform", `translate(${margin.left}px, 0px)`)
-        .call(d3.axisLeft(yScale))
+// barChart.append("g")
+//         .attr("class", "y-axis")
+//         .style("transform", `translate(${margin.left}px, 0px)`)
+//         .call(d3.axisLeft(yScale))
 
 
-// *************************************
-// Bar chart
-// *************************************
+// // *************************************
+// // Bar chart
+// // *************************************
 
-barChart.selectAll(".bar")
-        .data(nameGender)
-        .join("rect")
-        .attr("class", "bar")
-        .attr("width", xScale.bandwidth())
-        .attr("height", d => height - yScale(d.value))
-        .attr("x", d => xScale(d.firstName))
-        .attr("y", d => yScale(d.value))
-        .attr("fill", d => barColor(d.gender));
+// barChart.selectAll(".bar")
+//         .data(nameGender)
+//         .join("rect")
+//         .attr("class", "bar")
+//         .attr("width", xScale.bandwidth())
+//         .attr("height", d => height - yScale(d.value))
+//         .attr("x", d => xScale(d.firstName))
+//         .attr("y", d => yScale(d.value))
+//         .attr("fill", d => barColor(d.gender));
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -215,8 +215,8 @@ const bubbleColor = d3.scaleOrdinal()
   .range(["#F6BD60","#F5CAC3","#F28482"]); // color palette https://coolors.co/palette/f6bd60-f7ede2-f5cac3-84a59d-f28482
 
 const bubbleSize = d3.scaleLinear()
-.domain([5, 200])
-.range([10, 50]) 
+  .domain([5, 200])
+  .range([10, 50]) 
 
 
 // *************************************
@@ -229,42 +229,59 @@ const bubbleChart = d3.select("#bubble-chart")
   .attr("preserveAspectRatio", "xMidYMid meet")
   .classed("bubble", true)
   .style("border-style", "solid")
-  .style("border-width", 0)
+  .style("border-width", 1)
 
 
+// thank you Taran-J: https://stackoverflow.com/users/5852293/taran-j
+// https://stackoverflow.com/questions/38534333/how-do-i-add-a-transition-delay-between-multiple-individual-transitioning-polygo
 
-const bubbleNode = bubbleChart.append("g")
-        .selectAll("circle")
-        .data(nameGender)
-        .join("circle")
-        .attr("class", "bubbleNode")
-        .attr("r", d => bubbleSize(d.value))
-        .attr("cx", width / 2)
-        .attr("cy", height /2)
-        .style("fill", d => bubbleColor(d.gender))
-        .style("fill-opacity", 0.9)
-        .attr("stroke", "#4A4E69")
-        .style("stroke-width", 1)
+                  
+const nodes = bubbleChart.selectAll("g.node")
+                  .attr("x", width/2)
+                  .attr("y", height/2)
+                  .data(nameGender)
+                  .join(
+                    function(enter) {
+                      return enter
+                      .append("g")
+                      .attr("class", "node")
+                      .style("opacity", 0)
+                      .transition()
+                      .delay(function(d,i){ return 800*i; }) 
+                      .duration(1000)
+                      .style("opacity", 1)
+                    }
+                  )
+const circles = nodes.append("circle")
+            .attr("r", d => bubbleSize(d.value))
+            .style("fill", d => bubbleColor(d.gender))
+            .attr("stroke", "#4A4E69")
+            .style("stroke-width", 1) 
 
 
-bubbleNode.append("text")
-          .attr("dx", function(d) {return -20})
-          .text(function(d) {return d.firstName})
-
+ const labels = nodes.append("text")
+                  .text(function(d) {return d.firstName})
+                  .style("font-size", "6pt")
 
 
 const simulation = d3.forceSimulation()
-.force("center", d3.forceCenter().x(width * 0.4).y(height * 0.4)) // Attraction to the center of the svg area
-.force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (bubbleSize(d.value)+3) }).iterations(1)) // Force that avoids circle overlapping
+  .force("center", d3.forceCenter().x(width * 0.4).y(height * 0.4)) // Attraction to the center of the svg area
+  .force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (bubbleSize(d.value)+3) }).iterations(1)) // Force that avoids circle overlapping
 
 simulation
-.nodes(nameGender)
-.on("tick", function(d){
-bubbleNode
-.attr("cx", d => d.x)
-.attr("cy", d => d.y)
-}
-);             
+  .nodes(nameGender)
+  .on("tick", function(d){
+        
+    circles
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      
+    labels 
+    .attr("x", d => d.x)
+    .attr("y", d => d.y)
+
+  })             
   
+
 
   })
