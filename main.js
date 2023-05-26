@@ -4,8 +4,8 @@ d3.csv('Data/MoMAArtists.csv', d3.autoType)
     // console.log('MoMA artists', MoMAArtists)
     
     
-    const width = 900; //window.innerWidth
-    const height = 900; //window.innerHeight
+    const width = window.innerWidth; //window.innerWidth | 900
+    const height = window.innerHeight; //window.innerHeight | 900
     const margin = {top: 20, right: 20, bottom: 30, left: 40};
     
 // **************************************************
@@ -25,10 +25,10 @@ d3.csv('Data/MoMAArtists.csv', d3.autoType)
                           .sort(([,,a],[,,b]) => d3.descending(a,b))
                           .map(([firstname, gender, value]) => ({ ["firstName"]: firstname, ["gender"]: gender, ["value"]:value }))
                           .filter(function(d) {return d.value >= 28})
-    console.log("nameGender: ", nameGender) 
+    // console.log("nameGender: ", nameGender) 
 
     const valueSum = d3.sum(nameGender, d => d.value)
-    console.log("value sum", valueSum)
+    // console.log("value sum", valueSum)
 
 
 
@@ -50,7 +50,7 @@ const top30Names = nameGender.filter(function(d) {return d.value >= 50})
 // // *************************************
 
 const groupedByGender = d3.group(noNullGender, d => d.Gender)
-console.log("groupedByGender:", groupedByGender)
+// console.log("groupedByGender:", groupedByGender)
 
 // // ***********************************************
 // // Create hierarchy
@@ -60,29 +60,29 @@ console.log("groupedByGender:", groupedByGender)
 const hierarchyGroup = d3.hierarchy(groupedByGender)
     .count(d => d.value)
     .sort((a,b) => b.value - a.value)
-    console.log("hierarchyGroup:", hierarchyGroup)
+    // console.log("hierarchyGroup:", hierarchyGroup)
 
 const treemap = d3.treemap()
-.size([800, 600])
+.size([1000, 900])
 .round(true)
 
 
 const treemapRoot = treemap(hierarchyGroup)
-console.log('treemapRoot.children', treemapRoot.children)
+// console.log('treemapRoot.children', treemapRoot.children)
 
 // // *************************************
 // // Color scale
 // // *************************************
 const treeMapcolorScale = d3.scaleOrdinal()
         .domain(treemapRoot.children)
-        .range(["#277647","#4b0c3b","#ffc600"])  // color palette (middle three colors) https://coolors.co/palette/393e41-d3d0cb-e2c044-587b7f-1e2019
+        .range(["#277647","#77135e","#ffc600"])  // color palette (middle three colors) https://coolors.co/palette/393e41-d3d0cb-e2c044-587b7f-1e2019
 
 // // *************************************
 // // Treemap chart
 // // *************************************
 const treemapChart = d3.select("#gender-map-chart")
   .append("svg")
-  .attr("viewBox", `0 0 ${width*1.2} ${height*0.4}`)
+  .attr("viewBox", `0 0 ${width} ${height}`)
   .attr("preserveAspectRatio", "xMidYMid meet")
   .classed("gender-map", true)
   .style("background-color", "#ffffff")
@@ -137,8 +137,8 @@ const text = d3.select( current ).append('text')
 .join('tspan')
 .attr('x', 3)
 .attr('y', (d,i) => i ? '2.5em' : '1.15em')
+.attr('class', 'gender-label')
 .text(d => d)
-.style("font-weight", "bold")
 })
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -217,7 +217,10 @@ const text = d3.select( current ).append('text')
 // *************************************
 const bubbleColor = d3.scaleOrdinal()
   .domain(["Male", "Female", "Non-Binary"])
-  .range(["#277647","#4b0c3b","#ffc600"]); // color palette https://coolors.co/palette/f6bd60-f7ede2-f5cac3-84a59d-f28482
+  .range(["#277647","#b91e92","#ffc600"]); // color palette https://coolors.co/palette/f6bd60-f7ede2-f5cac3-84a59d-f28482
+  // .range(["#277647","#4b0c3b","#ffc600"]);
+
+
 
 const bubbleSize = d3.scaleLinear()
   .domain([5, 200])
@@ -260,19 +263,20 @@ const nodes = bubbleChart.selectAll("g.node")
 const circles = nodes.append("circle")
             .attr("r", d => bubbleSize(d.value))
             .style("fill", d => bubbleColor(d.gender))
-            .attr("stroke", "#4A4E69")
+            .attr("stroke", "white")
+            // .attr("stroke", "#4A4E69")
             .style("stroke-width", 1) 
 
 
  const nameLabels = nodes.append("text")
                   .text(function(d) {return d.firstName})
-                  .style("font-size", "6pt")
                   .attr("text-anchor", "middle")
+                  .attr('class', 'name-label')
 
 const valueLabels = nodes.append("text")
                   .text(function(d) {return d.value})
-                  .style("font-size", "6pt")
                   .attr("text-anchor", "middle")
+                  .attr('class', 'value-label')
 
 
 const simulation = d3.forceSimulation()
@@ -300,3 +304,6 @@ simulation
 
 
   })
+
+
+  

@@ -1,44 +1,73 @@
 <!DOCTYPE html>
+<html lang="eng">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Capstone - Tomiko Karino</title>
-    </head>
-  <body>
-    <div id="background">
-    <header>
-      <h1>Capstone project</h1>
-    </header>
-  <div id="container">
-    <section id="pie-chart">
-      <div class="chart-container">
-        <div id="pie-chart-legend"></div>
-        <div id="pie-chart" class="pie-chart"></div>
-      </div>
-    </section>
-    
-    <section id="gender-map">
-      <div class="chart-container">
-        <div id="gender-map-legend"></div>
-        <div id="gender-map-chart" class="gender-map-chart"></div>
-        <div id="nonBinary-label"></div>
-      </div>
-    </section>
-    
-    <section id="bubble">
-      <div class="chart-container">
-        <!-- <div id="bubble-chart-legend"></div> -->
-        <div id="bubble-chart" class="bubble-chart"></div>
-        <!-- <div id="bubble-tooltip"></div> -->
-      </div>
-    </section>
-    <section>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/IaEn7whqVto" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </section>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
+  <body class="container-fluid">
+    <div class="container">
+      <header>
+        <h1>Evocative visualization of void and fluidity</h1>
+      </header>
+    <main>
+
+        <p>“Data visualization is the process of presenting data in a graphical or pictorial format to help users understand, analyze and communicate information more effectively. It involves transforming data into visual elements such as charts, graphs, maps, and other graphical representations to convey complex information in an easy-to-understand manner. The primary goal of data visualization is to make complex data accessible and understandable, allowing users to quickly identify patterns, trends, and relationships in large datasets.”</p>
+        <p>This is a ChatGPT's answer to my question “What is data visualization?”</p>
+        <p>On point.  Concise.  Definitely not wrong.  It is probably in line with most people's understanding of what dataviz is and does.  </p>
+        <p>However, as data visualization matures as a field of study and as a medium, its use case needs to be expanded beyond just “transforming data into visual elements to convey complex information in an easy-to-understand manner.”  “To make complex data accessible and understandable,” a simplification almost always occurs in visualizations.  Individuals become data points in a sea of data, stripped of distinctiveness and unique experiences. They are grouped into categories, approximate to their original identities, to be processed, analyzed and visualized.  This reduction of complexity inherently abstracts any personal qualities, making it difficult to create an evocative visualization.</p>
+        <section id="scrolly">
+
+            <article id="gender-map">
+            <div class="chart-container">
+              <!-- <div id="gender-map-legend"></div> -->
+              <div id="gender-map-chart" class="gender-map-chart"></div>
+              <!-- <div id="nonBinary-label"></div> -->
+            </div>
+          </article>
+          <div class="scrolly_text">
+              <p class="step">What qualities does a visualization need for it to leave the audience with more questions than answers?  How can the experience go beyond just acknowledging the disparity?  How can I make a visualization that can be felt as well as be seen?</p>
+              <p class="step">Visualizations that appeal to emotions are capable of telling a story at an individual level while simultaneously portraying a larger picture.  Data are and must be aggregate in order for them to be useful.  From this aggregate quality, patterns and trends emerge, lending them their rhetorical power.  Yet conveying information at a macro level alone seldom brings out empathy in the audience.  It's like hearing news about a major earthquake that killed thousands of people in a faraway place that you have never visited.  You may empathize for a brief moment after you hear the news, yet quickly move on with your daily life.</p>
+              <p class="step">When thinking about visualizing the gender disparity among the artists in MoMA's permanent collection, the first name variable, instead of the gender, brings the data much closer to the audience. The following visualization displays the top 30 first names of the artists in MoMA's permanent collection. The artists data are first grouped by the first name variable, then by gender, and listed in the descending order.</p>
+          </div>
+
+        </section>
+        <p>Instead of laying out all 30 first names at once, it unveils them one by one.  By using the first name, which is a more subjective variable than the gender values, along with the delayed effect, it affords the audience time to understand what's unfolding in front of them and to make connections between the infographic and their own individual experiences and memories.</p>
+        <p>The gradual reveal of the data also helps to shift the passive reception of information into active thinking, instigating a further exploration on the subject of gender. With the male first name significantly outnumbering the female first name, the bubble chart conjures up in audience thoughts such as “there are only two female names among the top 30 first names,” or “two different spellings of the same male name appear before the first female name does.”</p>
+        <p>The amount of time it takes for the first female name to appear also taps into the tendency of the human mind to get comfortable with a routine.  One tends not to question the list of things when they are all in the same category.  With the introduction of an anomaly, one starts to see hegemony and disparity.  </p>
+        <p>Similarly, illustrating the lack of presence has an analogous effect.  In the interactive map of congress the Guardian published in the article, How diverse is the 2018 US Congress?, one can select different identities such as ethnicity, age, religion, and gender.  Depending on the identities selected, it displays the number of people in congress that share the same identity.  When “Trans + non-binary” is selected, it displays “0 people in Congress share this identity” and the map grays out.</p>
+        <p>This is a powerful visualization that resonates and contextualizes the lack of gender diversity among the members of congress in the United States.  By revealing how many members of the congress - 535 individuals who should represent the rest of the U.S. population - share the same identity as the audience, the abstract idea of politicians becomes more personal.</p>
+        <p>Another project that creatively makes visible what does not exist is the Library of Missing Datasets.  It is a web site and an art object, rather than a two-dimensional visualization.  The art object is a file cabinet filled with folders labeled with phrases like “People excluded from public housing because of criminal records,” “Mobility for older adults with physical disabilities or cognitive impairments,” and “Total number of local and state police departments using stingray phone trackers (IMSI-catchers).”</p>
+        <p>This project not only innovatively visualizes voids but also leads the audience to question why these data are missing and how decisions about which data gets included or excluded are made. Our society is full of classifications such as these.  In fact, it could not function without it.  Who can vote, who can drive, which public bathroom one can use, on what day garbage gets collected in each neighborhood.  Yes as prevalent as they are in our society, most of these classifications are so well integrated in our lives, they are often invisible.   With invisibility, they become a powerful and sometimes oppressive social order.   </p>
+        <p>Gender classification is a prime example.  Firmly established as a binary category, it influences us at the core of our identities and our perceptions of ourselves and others.  In recent years we have seen much debate and push backs for the rigid binary option of gender, especially in the United States, yet most of the gender data are still collected with just two choices: male and female.  And this social construct stubbornly affects the way we see the world.  </p>
+        <p>On a recent bus ride during my morning commute, I sat next to a man.  He appeared to be in his mid- to late-50s, dressed in a gray suit with a blue tie.  A few minutes after I sat down, he pulled out his phone from his bag, which I distinctly noticed as a “woman's purse.”  While I did not make any remarks to him, I vividly remember thinking to myself “huh, he has a woman's purse.”   Then it dawned on me that my own, almost unconscious observation was so very colored by the gender binary that has been inculcated in me.  After all, it is absurd that bags are gendered.   Yet it is often the case.  When one shops online for bags, shoes, clothes, jewelry, perfumes or many other items, the gender is usually the first filter that we use to navigate to “appropriate” products.</p>
+        <p>The invisible and insidious gender classification causes much struggle for those who do not identify as neither male nor female.  Every binary gender choice they are forced to make is a self-erasing experience.  This century-old practice also puts to question how accurate the gender data we collect is. Even if I succeeded in visualizing gender disparity innovatively, if the data itself inaccurately captures the gender distributions, it does little to deepen our understanding of gender nor further the conversation around gender equality. </p>
+        <p>With increasing discussions and efforts to push gender beyond the rigid binary values, we are starting to see data collection methods that offer more than two traditional values for gender.  One such example is a survey developed by Public Health England in collaboration with LGBTQ+ organizations in the United Kingdom. It was designed for use in routine national surveillance of HIV in England and Wales to determine self-identified gender and cis or trans status in a public health context. It offers three named genders, a catch-all fourth category, and an option for not disclosing gender identity. In a separate question, it asks about gender at birth, again giving an option for not disclosing.</p>
+        <p>While surveys like this are a step forward for non-binary populations to be counted, we need to push the conversation about gender further as our understanding of gender as well as its definition are evolving.  The American Medical Association now calls gender a “spectrum” rather than a binary, meaning that there is no discreet delineation between each gender value. Moreover, some people are gender-fluid, with their “gender identity shifting from day to day, year to year, or situation to situation.”</p>
+        <p>If our society were to move towards this line of thought, what would gender data look like?  It certainly will not be binary data.  It may not even be categorical data. Because if we understood gender to be flexible and fluid that could change over time, no list of choices will suffice regardless of how long that list is.</p>
+        <p>It then becomes a question of technological capability we have at hand. The technology we have today operates by means of exclusion.  It can make sense of data by putting them into distinct categories and finding similarities and differences between data points.  Its limitation, however, is not of a technical nature but a conceptual one. It's a reflection of how we, the developers of technology, see and make sense of the world around us.</p>
+        <p>We comprehend an object or a concept by identifying its unique qualities, by finding things that set it apart from the others, or its proximity to them. Wrapping our heads around the concept of fluid gender is as dizzying as imagining the edge of the universe.  Trying to capture something that's simultaneously nothing and everything seems daunting and impossible.  The aforementioned system of classifications indeed has a tight grip on our ways of understanding the world.  Fundamentally changing the way we make sense of it is most definitely challenging, but not impossible.</p>
+        <p>Acknowledging that categorizations such as gender and race are social and cultural constructs as much as they are biological traits is first and foremost necessary.  Recognizing that they have been employed to establish historically variable definitions of biology and culture and that they are records of practice and process rather than empirical truths would help us begin to perceive a novel technology beyond the already established framing of classifications.</p>
+        <p>While the Global North pushes the boundary of gender definition, in the rest of the world gender is still very much a social construct.  And gender inequalities occur as a result.  Girls in most parts of the world are twice less likely than boys of the same age to have access to the internet or digital skills; HIV epidemic is influenced by gender inequalities as girls are not as likely to be educated about protection against sexually transmitted diseases; as climate change exacerbates and access to clean water becomes scarcer, more girls will likely miss out on school because water fetching duty disproportionately falls on women and girls. There is enough list of gender inequalities like these to fill a whole research paper.  Challenging the rigid gender binary is necessary and important.  Yet just as important is continued efforts to collect conventional gender data so that we can have disaggregated data to analyze in order to see where gender inequalities occur.</p>
+        <p>It is also crucial to anticipate the possibility that, in many parts of the world, gender may never become a non-binary category.  Being able to live in a society that allows serious debates over the changing definition of gender, regardless of civil or insolent, without political, religious or cultural persecution is an extreme privilege.  Those, who live in such a society, should always keep in mind that not everyone - in fact the majority of people across the globe - are not afforded the same privilege.  Discussing how to address this regional tension is absolutely necessary for us to make progress towards true gender equality.</p>
+
+    </main>
   </div>
 
-</div>
+
     <!-- ******* SCRIPTS ****** -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="main.js" type="text/javascript"></script>
+      <!-- D3 -->
+      <script src="https://d3js.org/d3.v7.min.js"></script>
+      <!-- Local JS -->
+      <script src="main.js" type="text/javascript"></script>
+      <!-- Scrollama -->
+      <script src="https://unpkg.com/scrollama@3.2.0/build/scrollama.js"></script>
+      <script src="scroll.js" type="text/javascript"></script>      
+       <!-- Bootstrap -->
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <!-- ******* SCRIPTS ****** -->
   </body>
 </html>
+

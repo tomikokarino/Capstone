@@ -1,0 +1,90 @@
+/******************************************/
+/*****         STRUCTURE              *****/
+/******************************************/
+
+body.container-fluid {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: solid 1px blue;
+}
+
+.container {
+    border: solid 1px red;
+}
+
+
+
+main {
+    /* width: 40%; */
+    margin: auto;
+}
+
+#scrolly {
+    position: relative;
+}
+
+
+.row {
+    position: relative;
+}
+
+#gender-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    width: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+#gender-map.is-fixed {
+    position: fixed;
+  }
+  
+#gender-map.is-bottom {
+    bottom: 0;
+    top: auto;
+  }
+  
+  #gender-map .chart-container {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+.scrolly_text {
+    max-width: 30rem;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+
+.step {
+    opacity: 0;
+    padding: 1rem;
+}
+
+.step.is-active {
+    opacity: 1;
+}
+
+
+.gender-label {
+    font-family: sans-serif;
+    font-weight: bold;
+    fill: black;
+    font-size: 18pt;
+}
+
+.name-label,
+.value-label {
+    font-family: sans-serif;
+    font-size: 8pt;
+    fill: black;
+}
