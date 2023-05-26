@@ -6,17 +6,13 @@ body.container-fluid {
     width: 100%;
     margin: 0;
     padding: 0;
-    border: solid 1px blue;
 }
 
-.container {
+/* .container {
     border: solid 1px red;
-}
-
-
+} */
 
 main {
-    /* width: 40%; */
     margin: auto;
 }
 
@@ -30,38 +26,20 @@ main {
 }
 
 #gender-map {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: auto;
-    width: 100%;
+    position: sticky;
+    width: 40rem;
+    /* margin-left: 30rem; */
+    padding: 0;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    z-index: 0;
 }
-
-#gender-map.is-fixed {
-    position: fixed;
-  }
-  
-#gender-map.is-bottom {
-    bottom: 0;
-    top: auto;
-  }
-  
-  #gender-map .chart-container {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
 
 .scrolly_text {
     max-width: 30rem;
-    margin: auto;
     padding: 0 1rem;
+    margin-left: 40rem;
 }
 
 

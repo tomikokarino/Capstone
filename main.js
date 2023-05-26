@@ -63,7 +63,7 @@ const hierarchyGroup = d3.hierarchy(groupedByGender)
     // console.log("hierarchyGroup:", hierarchyGroup)
 
 const treemap = d3.treemap()
-.size([1000, 900])
+.size([1280, 708])
 .round(true)
 
 
