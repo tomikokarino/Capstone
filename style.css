@@ -2,50 +2,155 @@
 /*****         STRUCTURE              *****/
 /******************************************/
 
+body {
+    font-family: 'Ysabeau', sans-serif;
+}
+
 body.container-fluid {
     width: 100%;
     margin: 0;
     padding: 0;
+    background-color: #F5F5F5;
 }
 
-/* .container {
-    border: solid 1px red;
-} */
+.container {
+    border: solid 0px red;
+    background-color: #ffffff;
+    padding-top: 10%;
+}
+
+
+
+header {
+    margin-bottom: 15%;
+}
+
+@keyframes title-opacity {
+    from { opacity: 0;}
+    to {opacity: 1;}
+}
+
+
+h1#title {
+    font-family: 'Andada Pro', serif;
+    font-size: 42pt;
+    font-weight: 600;
+    text-align: center;
+    margin: 20% 0 30% 0;
+}
+
 
 main {
-    margin: auto;
+    border: solid 0px blue;
+    margin: 0;
 }
 
-#scrolly {
+p {
+    margin-right: 20%;
+    margin-left: 20%;
+    font-size: 18pt;
+    border: solid 0px green;
+    font-weight: 200;
+}
+
+.quote {
+    /* font-family: 'Ysabeau', sans-serif; */
+    
+    font-style: italic;
+}
+
+#treeMap-text p,
+#bubbleChart-text p,
+#guardianText p {
+    margin: 0;
+    padding: 0;
+    border: solid 0px pink; 
+    font-weight: 200;
+}
+
+.non-scrolly p {
+    padding-bottom: 10%;
+    border: solid 0px red;
+}
+
+
+#treeMap,
+#bubbleChart,
+#guardian {
     position: relative;
 }
 
-
-.row {
-    position: relative;
+.video {
+    aspect-ratio: 16 / 9;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; 
 }
 
-#gender-map {
+#treeMapViz {
     position: sticky;
     width: 40rem;
-    /* margin-left: 30rem; */
     padding: 0;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     z-index: 0;
+    border: solid 0px red;
 }
 
-.scrolly_text {
-    max-width: 30rem;
-    padding: 0 1rem;
+#bubbleViz {
+    position: sticky;
+    width: 60%;
+    /* height: 60%; */
+    padding: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 0;
+    border: solid 0px red;
+}
+
+#guardianImg {
+    position: sticky;
+    width: 50rem;
+    padding: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 0;
+    border: solid 0px red;
+}
+
+#bubbleViz .chart-container {
+    border: solid 0px black;
+}
+
+#treeMap-text {
+    max-width: 60rem;
+    padding-left: 2%;
     margin-left: 40rem;
 }
 
+#bubbleChart-text {
+    max-width: 40%;
+    padding-left: 2%;
+    margin-left: 60%;
+    border: solid 0px blue;
+}
+
+#guardianText {
+    max-width: 50rem;
+    padding-left: 2%;
+    margin-left: 50rem;
+    border: solid 0px blue;
+}
+
+#guardianImg {
+    border: solid 0px red;
+}
 
 .step {
     opacity: 0;
-    padding: 1rem;
 }
 
 .step.is-active {
@@ -54,15 +159,20 @@ main {
 
 
 .gender-label {
-    font-family: sans-serif;
-    font-weight: bold;
+    font-family: 'Ysabeau', sans-serif;
     fill: black;
-    font-size: 18pt;
+    font-size: 32pt;
+    font-weight: 200;
 }
 
 .name-label,
 .value-label {
-    font-family: sans-serif;
-    font-size: 8pt;
+    font-family: 'Ysabeau', sans-serif;
+    font-size: 9pt;
     fill: black;
+    font-weight: 100;
 }
+
+:root {
+    --offset-height: 200px;
+  }

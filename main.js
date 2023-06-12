@@ -1,3 +1,9 @@
+// Thank you Russell Samora
+//
+// enter-view
+// https://github.com/russellsamora/enter-view
+//
+
 /* LOAD DATA */
 d3.csv('Data/MoMAArtists.csv', d3.autoType)
   .then(MoMAArtists => {
@@ -75,17 +81,23 @@ const treemapRoot = treemap(hierarchyGroup)
 // // *************************************
 const treeMapcolorScale = d3.scaleOrdinal()
         .domain(treemapRoot.children)
-        .range(["#277647","#77135e","#ffc600"])  // color palette (middle three colors) https://coolors.co/palette/393e41-d3d0cb-e2c044-587b7f-1e2019
+        .range(["#D1FDEB","#E2BEFD","#F4FDBE"])  // color palette (middle three colors) https://coolors.co/palette/393e41-d3d0cb-e2c044-587b7f-1e2019
+        // .range(["#75FC9A","#9169FC","#F5FD43"])  // color palette (middle three colors) https://coolors.co/palette/393e41-d3d0cb-e2c044-587b7f-1e2019
 
 // // *************************************
 // // Treemap chart
 // // *************************************
 const treemapChart = d3.select("#gender-map-chart")
   .append("svg")
-  .attr("viewBox", `0 0 ${width} ${height}`)
+  .attr("viewBox", `0 0 1280 708`)
+  // .attr("viewBox", `0 0 ${width} ${height}`)
   .attr("preserveAspectRatio", "xMidYMid meet")
   .classed("gender-map", true)
   .style("background-color", "#ffffff")
+  // .style("border-color", "blue")
+  // .style("border-width", 5)
+  // .style("border-style", "solid")
+
 
 
 const g = treemapChart.append('g')
@@ -96,13 +108,14 @@ const gender = g.selectAll('g.gender')
 .join('g')
 .attr('class', 'gender')
 .attr('transform', d => `translate(${ d.x0 },${ d.y0 })`)
-.style('font-size', 14)
+.style('font-size', 24)
 // console.log('data[1]', treemapRoot.children)
 
 gender.append('rect')
 .attr('fill', d => treeMapcolorScale(d))
-.attr('stroke', 'white')
-.attr('opacity', 0.7)
+.style("stroke", "#01579B")
+.style("stroke-width", 1) 
+// .attr('opacity', 0.55)
 // the width is the right edge position - the left edge position
 .attr('width', d => d.x1 - d.x0)
 // same for height, but bottom - top
@@ -143,83 +156,18 @@ const text = d3.select( current ).append('text')
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // //                                                                                                                    //
-// //                                                  Bar chart                                                         //
+// //                                                  Bubble chart                                                         //
 // //                                                                                                                    //
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// // **************
-// // Scales
-// //**************
-
-// const xScale = d3.scaleBand()
-//                 .domain(nameGender.map(d => d.firstName))
-//                 .range([margin.left, (width + margin.left + margin.right)])
-//                 .padding(0.1);
-
-// const yScale = d3.scaleLinear()
-//                 .domain([0, d3.max(nameGender, d => d.value)])
-//                 .range([height, 0]);
-
-// const barColor = d3.scaleOrdinal()
-//                 .domain(["Male", "Female", "Non-Binary"])
-//                 .range(["#F6BD60","#F5CAC3","#F28482"]); // color palette https://coolors.co/palette/f6bd60-f7ede2-f5cac3-84a59d-f28482
-              
-
-
-// const barChart = d3.select("#bar-chart")
-//                   .append("svg")
-//                   .attr("width", width + margin.left + margin.right)
-//                   .attr("height", height + margin.top + margin.bottom)
-
-
-// // **************
-// // X-axis
-// // **************
-
-// barChart.append("g")
-//         .attr("calss", "x-axis")
-//         .style("transform", `translate(0,${width}px)`)
-//         .call(d3.axisBottom(xScale))
-
-// // **************
-// // Y-axis
-// // **************
-
-// barChart.append("g")
-//         .attr("class", "y-axis")
-//         .style("transform", `translate(${margin.left}px, 0px)`)
-//         .call(d3.axisLeft(yScale))
-
-
-// // *************************************
-// // Bar chart
-// // *************************************
-
-// barChart.selectAll(".bar")
-//         .data(nameGender)
-//         .join("rect")
-//         .attr("class", "bar")
-//         .attr("width", xScale.bandwidth())
-//         .attr("height", d => height - yScale(d.value))
-//         .attr("x", d => xScale(d.firstName))
-//         .attr("y", d => yScale(d.value))
-//         .attr("fill", d => barColor(d.gender));
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                    //
-//                                                  Bubble chart                                                      //
-//                                                                                                                    //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // *************************************
 // Scales
 // *************************************
 const bubbleColor = d3.scaleOrdinal()
   .domain(["Male", "Female", "Non-Binary"])
-  .range(["#277647","#b91e92","#ffc600"]); // color palette https://coolors.co/palette/f6bd60-f7ede2-f5cac3-84a59d-f28482
-  // .range(["#277647","#4b0c3b","#ffc600"]);
-
+  .range(["#D1FDEB","#E2BEFD","#F4FDBE"])  // color palette (middle three colors) https://coolors.co/palette/393e41-d3d0cb-e2c044-587b7f-1e2019
+  // .range(["#75FC9A","#9169FC","#F5FD43"]); // color palette https://coolors.co/palette/f6bd60-f7ede2-f5cac3-84a59d-f28482
 
 
 const bubbleSize = d3.scaleLinear()
@@ -233,74 +181,83 @@ const bubbleSize = d3.scaleLinear()
 
 const bubbleChart = d3.select("#bubble-chart")
   .append("svg")
-  .attr("viewBox", `0 0 ${width*0.7} ${height*0.7}`)
+  // .attr("viewBox", `0 0 900 900`)
+  .attr("viewBox", `0 0 ${width*0.35} ${height*0.6}`)
   .attr("preserveAspectRatio", "xMidYMid meet")
   .classed("bubble", true)
-  .style("border-style", "solid")
-  .style("border-width", 0)
+  // .style("border-style", "solid")
+  // .style("border-width", 1)
+  // .style("border-color", "green")
+
+  enterView({
+    selector: '#bubbleViz',
+    enter: function() {
+        const circle_delay = 23000;
+        const nodes = bubbleChart.selectAll("g.node")
+                        .attr("x", width)
+                        .attr("y", height)
+                        .data(nameGender)
+                        .join(
+                            function(enter) {
+                            return enter
+                            .append("g")
+                            .attr("class", "node")
+                            .style("opacity", 0)
+                            .transition()
+                            .delay(function(d,i){
+                                return i / nameGender.length * circle_delay;
+                            })
+                            .duration(1000)
+                            .style("opacity", 1)
+                            // .style("border-style", "solid")
+                            // .style("border-width", 0)
+                            // .style("border-color", "blue")
+                            }
+                        )
+
+        const circles = nodes.append("circle")
+                    .attr("r", d => bubbleSize(d.value))
+                    .style("fill", d => bubbleColor(d.gender))
+                    .style("stroke", "#6da1c9")
+                    .style("stroke-width", 1) 
+                    // .attr('opacity', 0.55)
 
 
-const circle_delay = 23000;
-const nodes = bubbleChart.selectAll("g.node")
-                  .attr("x", width/2)
-                  .attr("y", height/2)
-                  .data(nameGender)
-                  .join(
-                    function(enter) {
-                      return enter
-                      .append("g")
-                      .attr("class", "node")
-                      .style("opacity", 0)
-                      .transition()
-                      .delay(function(d,i){
-                        return i / nameGender.length * circle_delay;
-                      })
-                      .duration(1000)
-                      .style("opacity", 0.8)
-                    }
-                  )
+        const nameLabels = nodes.append("text")
+                        .text(function(d) {return d.firstName})
+                        .attr("text-anchor", "middle")
+                        .attr('class', 'name-label')
 
-const circles = nodes.append("circle")
-            .attr("r", d => bubbleSize(d.value))
-            .style("fill", d => bubbleColor(d.gender))
-            .attr("stroke", "white")
-            // .attr("stroke", "#4A4E69")
-            .style("stroke-width", 1) 
+        const valueLabels = nodes.append("text")
+                        .text(function(d) {return d.value})
+                        .attr("text-anchor", "middle")
+                        .attr('class', 'value-label')
 
 
- const nameLabels = nodes.append("text")
-                  .text(function(d) {return d.firstName})
-                  .attr("text-anchor", "middle")
-                  .attr('class', 'name-label')
+        const simulation = d3.forceSimulation()
+        .force("center", d3.forceCenter().x(width * 0.18).y(height * 0.29)) // Attraction to the center of the svg area
+        // .force("center", d3.forceCenter().x(width * 0.4).y(height * 0.4)) // Attraction to the center of the svg area
+        .force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (bubbleSize(d.value)+3) }).iterations(1)) // Force that avoids circle overlapping
 
-const valueLabels = nodes.append("text")
-                  .text(function(d) {return d.value})
-                  .attr("text-anchor", "middle")
-                  .attr('class', 'value-label')
+        simulation
+        .nodes(nameGender)
+        .on("tick", function(d){
+                
+            circles
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+            
+            nameLabels 
+            .attr("x", d => d.x)
+            .attr("y", d => d.y)
 
+            valueLabels 
+            .attr("x", d => d.x)
+            .attr("y", d => d.y+10)
 
-const simulation = d3.forceSimulation()
-  .force("center", d3.forceCenter().x(width * 0.4).y(height * 0.4)) // Attraction to the center of the svg area
-  .force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (bubbleSize(d.value)+3) }).iterations(1)) // Force that avoids circle overlapping
-
-simulation
-  .nodes(nameGender)
-  .on("tick", function(d){
-        
-    circles
-      .attr("cx", d => d.x)
-      .attr("cy", d => d.y)
-      
-    nameLabels 
-    .attr("x", d => d.x)
-    .attr("y", d => d.y)
-
-    valueLabels 
-    .attr("x", d => d.x)
-    .attr("y", d => d.y+10)
-
-  })             
-  
+        })   
+    }
+});
 
 
   })
