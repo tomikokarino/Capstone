@@ -80,11 +80,12 @@ p {
     position: relative;
 }
 
-.video {
-    aspect-ratio: 16 / 9;
-    width: 80%;
+#video {
+    /* aspect-ratio: 16 / 9;
+    width: 80%; */
     margin-left: 10%;
     margin-right: 10%; 
+    border-style: none;
 }
 
 #treeMapViz {
