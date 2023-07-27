@@ -1,9 +1,3 @@
-// Thank you Russell Samora
-//
-// enter-view
-// https://github.com/russellsamora/enter-view
-//
-
 /* LOAD DATA */
 d3.csv('Data/MoMAArtists.csv', d3.autoType)
   .then(MoMAArtists => {
@@ -31,10 +25,10 @@ d3.csv('Data/MoMAArtists.csv', d3.autoType)
                           .sort(([,,a],[,,b]) => d3.descending(a,b))
                           .map(([firstname, gender, value]) => ({ ["firstName"]: firstname, ["gender"]: gender, ["value"]:value }))
                           .filter(function(d) {return d.value >= 28})
-    // console.log("nameGender: ", nameGender) 
+    console.log("nameGender: ", nameGender) 
 
     const valueSum = d3.sum(nameGender, d => d.value)
-    // console.log("value sum", valueSum)
+    console.log("value sum", valueSum)
 
 
 
@@ -182,15 +176,23 @@ const bubbleSize = d3.scaleLinear()
 const bubbleChart = d3.select("#bubble-chart")
   .append("svg")
   // .attr("viewBox", `0 0 900 900`)
-  .attr("viewBox", `0 0 ${width*0.35} ${height*0.6}`)
+  .attr("viewBox", `0 0 ${width*0.4} ${height*0.7}`)
+  // .attr("viewBox", `0 0 ${width*0.35} ${height*0.6}`)
   .attr("preserveAspectRatio", "xMidYMid meet")
   .classed("bubble", true)
   // .style("border-style", "solid")
   // .style("border-width", 1)
   // .style("border-color", "green")
 
+// 
+// Thank you Russell Samora
+//
+// enter-view
+// https://github.com/russellsamora/enter-view
+//
   enterView({
     selector: '#bubbleViz',
+    offset: 0.3,
     enter: function() {
         const circle_delay = 23000;
         const nodes = bubbleChart.selectAll("g.node")

@@ -6,23 +6,41 @@
 // 
 
 
-// Global
+// Global const
 let main = d3.select("main");
 // Text-only scroll
 let scrolly = main.selectAll(".scrolly");
 let scrollyStep = scrolly.selectAll(".step");
+// Section Heading scroll
+let sectionHeading1 = main.select("#sectionHeading1");
+let head1Step = sectionHeading1.selectAll("step");
+// Quote scroll
+let quote = main.select("#quote");
+let quoteStep = quote.selectAll(".step");
+// Intro scroll
+let Intro = main.select("#Intro");
+let IntroStep = Intro.selectAll(".step");
 // Treemap scroll
 let treeMap = main.select("#treeMap");
 let treeMapViz = treeMap.select("#treeMapViz");
 let chart = treeMapViz.select(".chart-container");
 let textContainer = treeMap.select("#treeMap-text");
 let treeMapStep = textContainer.selectAll(".step");
+// What's evocative visualization 
+let evocative = main.select("#evocative");
+let evocativeStep = evocative.selectAll(".step");
 // Bubble chart scroll
-let bubbleChart = main.select("#bubbleChart");
-let bubbleViz = bubbleChart.select("#bubbleViz");
-let bChartContainer = bubbleViz.select(".chart-container");
-let bTextContainer = bubbleChart.select("#bubbleChart-text");
-let bubbleStep = bTextContainer.selectAll(".step");
+let bubbleChartText = main.select("#bubbleChart-text");
+let bubbleStep = bubbleChartText.selectAll(".step");
+
+// let bubbleChart = main.select("#bubbleChart");
+// let bubbleViz = bubbleChart.select("#bubbleViz");
+// let bChartContainer = bubbleViz.select(".chart-container");
+// let bTextContainer = bubbleChart.select("#bubbleChart-text");
+// let bubbleStep = bTextContainer.selectAll(".step");
+// Video scroll
+let video = main.select("#video");
+let videoStep = video.selectAll(".step");
 // Guaridan image scroll
 let guardian = main.select("#guardian");
 let guaridanImg = guardian.select("#guardianImg");
@@ -33,8 +51,13 @@ let guardianStep = gtextContainer.selectAll(".step")
 
 // initialize the scrollama
 var scrollyScroller = scrollama();
+var heading1Scroller = scrollama();
+var quoteScroller = scrollama();
+var IntroScroller = scrollama();
 var treeMapScroller = scrollama();
+var evocativeScroller = scrollama();
 var bubbleScroller = scrollama();
+var videoScroller = scrollama();
 var guardianScroller = scrollama();
 
 // resize function to set dimensions on load and on page resize
@@ -50,9 +73,9 @@ function handleResize() {
         .style("height", treeMapHeight + "px")
         .style("top", graphicMarginTop + "px");
 
-    bubbleViz
-        .style("height", bubbleVizHeight + "px")
-        .style("top", graphicMarginTop + "px");
+    // bubbleViz
+    //     .style("height", bubbleVizHeight + "px")
+    //     .style("top", graphicMarginTop + "px");
     
     guaridanImg
         .style("height", guardianHeight + "px")
@@ -61,14 +84,13 @@ function handleResize() {
 
     // tell scrollama to update new element dimensions
     treeMapScroller.resize();
-    bubbleScroller.resize();
+    // bubbleScroller.resize();
     guardianScroller.resize();
 }
 
 // stepEnter
 function handleStepEnter(response) {
     // response = { element, direction, index }
-    console.log("handleStepEnter response", response);
     // add to color to current step
     response.element.classList.add("is-active");
 }
@@ -76,7 +98,6 @@ function handleStepEnter(response) {
 // stepExit
 function handleStepExit(response) {
     // response = { element, direction, index }
-    console.log(response);
     // remove color from current step
     response.element.classList.remove("is-active");
 }
@@ -88,23 +109,33 @@ function init() {
 
     var stepHeight = Math.floor(window.innerHeight * 0.3);
 
-    // Bottom padding for the step elements
-    scrollyStep.style("padding-bottom", stepHeight + "px");
-    // console.log("stepHeight", stepHeight * 0.4)
+    // *************************************************************************************
+    // Introduction
+    IntroStep.style("padding-bottom", stepHeight + "px");
+    IntroScroller 
+         .setup({
+             step: "#Intro .step",
+             debug: false,
+             offset: 0.4,
+             progress: true
+         })
+         .onStepEnter(handleStepEnter);
 
-    scrollyScroller 
+    // ************************************************************************************* 
+    // Quote section
+    quote.style("padding-bottom", stepHeight + "px");
+    quoteScroller 
         .setup({
-            step: ".scrolly .step",
+            step: "#quote .step",
             debug: false,
             offset: 0.4,
             progress: true
         })
         .onStepEnter(handleStepEnter);
 
-    // Bottom padding for the step element
+    // *************************************************************************************
+    // Treemap section
     treeMapStep.style("padding-bottom", stepHeight + "px");
-    // treeMapStep.style('height', stepHeight + 'px');
-
     treeMapScroller
         .setup({
             container: '#treeMap', // our outermost scrollytelling element
@@ -116,22 +147,46 @@ function init() {
         })
         .onStepEnter(handleStepEnter);
 
-    // Bottom padding for the step elements
+    // *************************************************************************************
+    // What's an evocative visualization?
+    evocativeStep.style("padding-bottom", stepHeight + "px");
+    evocativeScroller
+    .setup({
+        step: '#evocative .step', // the step elements
+        offset: 0.4, // set the trigger to be 1/2 way down screen
+        debug: false, // display the trigger offset for testing
+    })
+    .onStepEnter(handleStepEnter);
+
+    // *************************************************************************************
+    // Bubble chart section
     bubbleStep.style("padding-bottom", stepHeight + "px");
-    bubbleChart.style("padding-bottom", stepHeight + "px");
-
-
     bubbleScroller
         .setup({
-            container: '#bubbleChart', // our outermost scrollytelling element
-            bubbleViz: '#bubbleViz', // the graphic
-            bTextContainer: '#bubbleChart-text', // the step container
-            step: '#bubbleChart #bubbleChart-text .step', // the step elements
+            // container: '#bubbleChart', // our outermost scrollytelling element
+            // bubbleViz: '#bubbleViz', // the graphic
+            // bubbleChartText: '#bubbleChart-text', // the step container
+            step: '#bubbleChart-text .step', // the step elements
             offset: 0.4, // set the trigger to be 1/2 way down screen
             debug: false, // display the trigger offset for testing
         })
         .onStepEnter(handleStepEnter);
+     
+    // *************************************************************************************
+    // FirstName video section
+    videoStep.style("padding-bottom", stepHeight + "px");
+    videoScroller
+         .setup({
+             step: "#video .step",
+             debug: false,
+             offset: 0.4,
+             progress: true
+         })
+         .onStepEnter(handleStepEnter);
+ 
 
+    // *************************************************************************************
+    // Guardian interactive map section
     guardianStep.style("padding-bottom", stepHeight + "px");
     guardian.style("padding-bottom", stepHeight + "px");
 
@@ -145,6 +200,20 @@ function init() {
             debug: false, // display the trigger offset for testing
         })
         .onStepEnter(handleStepEnter);
+
+    // *************************************************************************************
+    // Bottom scroll section
+    scrollyStep.style("padding-bottom", stepHeight + "px");
+    scrollyScroller 
+        .setup({
+            step: ".scrolly .step",
+            debug: false,
+            offset: 0.4,
+            progress: true
+        })
+        .onStepEnter(handleStepEnter);
+
+        
 
     // setup resize event
     window.addEventListener('resize', handleResize);
