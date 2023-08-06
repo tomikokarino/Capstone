@@ -67,7 +67,6 @@ p {
 }
 
 a:link, a:visited {
-    /* color: #FB8DA0; */
     color: #FB489A;
     text-decoration: underline;
 }
@@ -78,9 +77,7 @@ a:hover {
 }
 
 span.yellow {
-    /* background-color: #FFFF8A; */
     background-color: #FFD700;
-    /* background-color: #FFFDD0; */
     font-weight:300;
 }
 
@@ -154,6 +151,11 @@ p {
     border: solid 0px green;
 }
 
+.non-scrolly p {
+    padding-bottom: 5%;
+    border: solid 0px red;
+}
+
 div.step > p {
     margin-bottom: 5%;
 }
@@ -182,18 +184,11 @@ div.step > p.OKeeffe {
 }
 
 #treeMap-text p,
-/* #bubbleChart-text p, */
 #guardianText p {
     margin: 0;
     padding: 0;
     border: solid 0px pink; 
 }
-
-.non-scrolly p {
-    padding-bottom: 10%;
-    border: solid 0px red;
-}
-
 
 #treeMap,
 #bubbleChart,
@@ -209,12 +204,11 @@ div.step > p.OKeeffe {
     margin-left: 40rem;
 }
 
-/* #bubbleChart-text {
-    max-width: 40%;
-    padding-left: 2%;
-    margin-left: 60%;
-    border: solid 0px blue;
-} */
+section#evocative {
+    margin-bottom: 20%;
+}
+
+
 
 #guardianText {
     max-width: 50rem;
@@ -253,9 +247,6 @@ video {
 }
 
 #bubbleViz {
-    /* position: sticky; */
-    /* width: 60%; */
-    /* height: 60%; */
     padding: 0;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
@@ -278,6 +269,14 @@ video {
 #bubbleViz .chart-container {
     border: solid 0px black;
 }
+
+#footer {
+    padding: 0 10%;
+}
+
+#footer > p {
+    margin-top: 5%;
+}
 /******************************************/
 /*****          STEP OPACITY          *****/
 /******************************************/
@@ -290,9 +289,6 @@ video {
     opacity: 1;
 }
 
-/* :root {
-    --offset-height: 200px;
-  } */
 
 
 

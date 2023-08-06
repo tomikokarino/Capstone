@@ -26,7 +26,7 @@
         <div class="step">
         <p><a href="https://www.moma.org/calendar/exhibitions/5493" target="_blank">The exhibition, currently on view at the Museum of Modern Art (MoMA)</a>, titled with the above quote by Georgia O'Keeffe features the artist's work that illustrates her iterative creative approach. From the beginning of her artistic career, O'Keeffe drew and painted the same subjects repeatedly until she was able to perfectly capture their essence.</p>
         <p>In her epistolary correspondences with her contemporaries, O'Keeffe is reported to have produced numerous drawings of the same subject sometimes overnight, sometimes over a span of decades.  She experimented with different media, colors and compositions in search of the right mood, texture and tone. </p>
-        <p>These repetitions and continuous gaze were her attempt in understanding her subject to distill its inner quality.  Gathered in the exhibition are serieses of her works that show the progress from observation to abstraction.</p>
+        <p>These repetitions and continuous gaze were her attempts in understanding her subject to distill its inner quality.  Gathered in the exhibition are serieses of her works that show the progress from observation to abstraction.</p>
       </div>
       <div class="step">
         <p>While I was browsing through her wonderful drawings in charcoal, pastel and watercolor, my mind kept drifting to data visualization.</p>
@@ -41,7 +41,7 @@
         <div class="chart-container">
           <div class="genderTreemapTitle">Gender distribution of artists in MoMA's collection</div>
           <div id="gender-map-chart" class="gender-map-chart"></div>
-          <div class="genderTreemapNote">There are three artists categorized as "non-binary" in the collection, which is not discernible due to its small proportion.</div>
+          <div class="genderTreemapNote">* There are three artists categorized as "non-binary" in the collection, which is not discernible due to its small proportion.</div>
         </div>
       </article>
       <div id="treeMap-text">
@@ -53,7 +53,7 @@
         <p>Since many art institutions in the United States started participating in Open Access initiatives and have made data of public-domain artworks in their collections publicly available, scholars and researchers have worked on similar projects.</p>  
         <p>One such example is an event organized and hosted by the National Gallery of Art (NGA), <a href="https://www.nga.gov/press/2019/datathon.html" target="_blank"><em>Coding our Collection: The National Gallery of Art Datathon</em></a>, in which the museum collaborated with researchers to analyze their permanent collection data. Various institutions participated in this event and created dashboards that examine the NGA's data with different focus.</p>
         <p>One of the teams charted the history of acquisitions, and created a <a href="https://raven-mcknight.shinyapps.io/intent-in-acquisition/" target="_blank">graph that visualizes the gender distribution of artworks made by male, female, or unknown gender</a>. Another team produced a dashboard, <a href="https://bheggeseth.shinyapps.io/DiversityOnDisplay/" target="_blank">Diversity on Display: Who's on the Wall at NGA?</a>, that shows "the artist gender identity, race/ethnicity, and geographical distribution of the NGA collection objects that are on public view over time on a chosen museum floor."</p>
-        <p>These projects and my treemap for the Spring 2022 course, all succeeded in visualizing the overwhelming gender disparity among the artists in the museums' collections. <span class="yellow">Yet that's all they do</span>. They merely display the gender gap, a comparison between male and non-male(s).</p>
+        <p>These projects and my treemap for the Spring 2022 course succeeded in visualizing the overwhelming gender disparity among the artists in the museums' collections. <span class="yellow">Yet that's all they do</span>. They merely display the gender gap, a comparison between male and non-male(s).</p>
         <p>Having worked on the gender area map for the Advanced Interactive Data Visualization Studio course and researching similar projects motivated me to think about how to more creatively represent gender disparity and push the conversation beyond "there are more male than female."</p>
       </section>
       <div class="sectionHeading">
@@ -63,22 +63,9 @@
       <p class="step">What qualities does a visualization need for it to <span class="yellow">leave the audience with more questions than answers?</span> How can the experience <span class="yellow">go beyond just acknowledging the disparity?</span> How can I make a <span class="yellow">visualization that can be felt as well as be seen?</span></p>
       <p class="step">Visualizations that appeal to emotions are capable of telling a story at an individual level while simultaneously portraying a larger picture.</p>
       <p class="step">Data are and must be aggregate in order for them to be useful. From this aggregate quality, patterns and trends emerge, lending them their rhetorical power. Yet conveying information at a macro level alone seldom brings out empathy in the audience. It's like hearing news about a major earthquake that killed thousands of people in a faraway place that you have never visited. You may empathize for a brief moment after you hear the news, yet quickly move on with your daily life.</p>
+      <p class="step">When thinking about visualizing the gender disparity among the artists in MoMA's permanent collection, the first name variable, instead of the gender variable, brings the data much closer to the audience. The following bubble chart displays the 30 most common first names among the artists in MoMA's permanent collection.</p>  
     </section>
-      <!-- <section id="bubbleChart">
-        <article id="bubbleViz">
-          <div class="chart-container">
-            <div class="bubbleChartTitle">Top 30 first names of artists in MoMA's collection</div>
-            <div id="bubble-chart" class="bubble-chart"></div>
-          </div>
-        </article>
-        <div id="bubbleChart-text">
-          <p class="step">When thinking about visualizing the gender disparity among the artists in MoMA's permanent collection, the first name variable, instead of the gender variable, brings the data much closer to the audience. This bubble chart displays the 30 most common first names among the artists in MoMA's permanent collection.</p>
-          <p class="step">Instead of laying out all 30 names at once, it unveils them one by one. By using the first name, which is a more subjective variable than the gender values, along with the delayed effect, it affords the audience time to understand what's unfolding in front of them and to make connections between the infographic and their own individual experiences and memories.</p>
-          <p class="step">The gradual reveal of the data also helps to shift the passive reception of information into active thinking, instigating a further exploration on the subject of gender. The amount of time it takes for the first female name to appear adds to the reveal of the intention of the chart. With the introduction of an anomaly, one starts to see hegemony and disparity. A visualization that helps the viewer realize the disparity on their own, rather than simply illustrates it for them, is more impactful.</p>
-        </div>
-      </section> -->
-
-      <section id="bubbleChart">
+    <section id="bubbleChart">
         <article id="bubbleViz">
           <div class="chart-container">
             <div class="bubbleChartTitle">Top 30 first names of artists in MoMA's collection</div>
@@ -87,8 +74,7 @@
         </article>
         </section>
         <section id="bubbleChart-text">
-          <p class="step">When thinking about visualizing the gender disparity among the artists in MoMA's permanent collection, the first name variable, instead of the gender variable, brings the data much closer to the audience. This bubble chart displays the 30 most common first names among the artists in MoMA's permanent collection.</p>
-          <p class="step">Instead of laying out all 30 names at once, it unveils them one by one. By using the first name, which is a more subjective variable than the gender values, along with the delayed effect, it affords the audience time to understand what's unfolding in front of them and to make connections between the infographic and their own individual experiences and memories.</p>
+          <p class="step">Instead of laying out all 30 names at once, it unveils them one by one. By using the first name, which is a more personal variable than the gender values, along with the delayed effect, it affords the audience time to understand what's unfolding in front of them and to make connections between the infographic and their own individual experiences and memories.</p>
           <p class="step">The gradual reveal of the data also helps to <span class="yellow">shift the passive reception of information into active thinking</span>, instigating a further exploration on the subject of gender. The amount of time it takes for the first female name to appear adds to the reveal of the intention of the chart. With the introduction of an anomaly, one starts to see hegemony and disparity. A visualization that <span class="yellow">helps the viewer realize the disparity on their own, rather than simply illustrates it</span> for them, is more impactful.</p>
           <p class="step">In this regard, <span class="yellow">intentionally perplexing visualization</span> may be effective in aiding the viewer to reach their own understanding of a visualization.</p>
         </section>
@@ -107,7 +93,7 @@
       <section id="guardian">
         <figure id="guardianImg">
           <img src="Images/TheGuardian-congress-map.png" width="100%"/>
-          <figcaption>Screenshot of <em>How diverse if the 2018 US Congress?</em> visualization.</figcaption>
+          <figcaption>"How diverse if the 2018 US Congress?" <em>The Guardian</em></figcaption>
         </figure>
         <div id="guardianText">
           <p class="step">In the interactive map of congress the <em>Guardian</em> published in the article, <a href="https://www.theguardian.com/us-news/ng-interactive/2018/nov/15/new-congress-us-house-of-representatives-senate" target="_blank"><em>How diverse is the 2018 US Congress?</em></a>, one can select different identities such as ethnicity, age, religion, and gender. Depending on the identities selected, it displays the number of people in congress that share the same identity. </p>
@@ -116,17 +102,17 @@
         </div>
       </section>
       <section class="scrolly">
-        <p class="step">Another project that <span class="yellow">creatively makes visible what does not exist</span> is the <a href="https://mimionuoha.com/the-library-of-missing-datasets" target="_blank">Library of Missing Datasets</a>. It is a web site and an art object, rather than a two-dimensional visualization. The art object is a file cabinet filled with folders labeled with phrases like <span class="gray">"People excluded from public housing because of criminal records,"</span> <span class="gray">"Mobility for older adults with physical disabilities or cognitive impairments,"</span> and <span class="gray">"Total number of local and state police departments using stingray phone trackers (IMSI-catchers)."</span></p>
+        <p class="step">Another project that <span class="yellow">creatively makes visible what does not exist</span> is the <a href="https://mimionuoha.com/the-library-of-missing-datasets" target="_blank">Library of Missing Datasets</a> by Mimi Ọnụọha. It is a web site and an art object, rather than a two-dimensional visualization. The art object is a file cabinet filled with folders labeled with phrases like <span class="gray">"People excluded from public housing because of criminal records,"</span> <span class="gray">"Mobility for older adults with physical disabilities or cognitive impairments,"</span> and <span class="gray">"Total number of local and state police departments using stingray phone trackers (IMSI-catchers)."</span></p>
         <p class="step">This project not only innovatively visualizes voids but also leads the audience to question why these data are missing and how decisions about which data gets included or excluded are made. Our society is full of classifications such as these. In fact, it could not function without it. Who can vote, who can drive, which public bathroom one can use, on what day garbage gets collected in each neighborhood. Yet as prevalent as they are in our society, most of these classifications are so well integrated in our lives, they are often invisible. With invisibility, they become a <span class="yellow">powerful and sometimes oppressive social order</span>.</p>
         <p class="step">On a recent bus ride during my morning commute, I sat next to a man, who appeared to be in his mid- to late-50s, dressed in a suit and a tie. A few minutes after I sat down, he pulled out his phone from his bag, which I distinctly noticed as a "woman's purse." While I did not make any remarks to him, I vividly remember thinking to myself "huh, he has a purse." Then it dawned on me that <span class="yellow">my own, almost unconscious observation was so very colored by the gender binary</span> that has been inculcated in me. After all, it is absurd that bags are gendered. Yet it is often the case. When one shops online for bags, shoes, clothes, jewelry, perfumes, the gender is usually the first filter that we use to navigate to "appropriate" products.</p>
-        <p class="step">The invisible and insidious gender classification causes much struggle for those who do not identify as neither male nor female. Every binary gender choice they are forced to make is a self-erasing experience. This century-old practice also puts to question how accurate the gender data we collect is. Even if I succeeded in visualizing gender disparity innovatively, if the data itself inaccurately captures the gender distributions, it does little to deepen our understanding of gender nor further the conversation around gender equality.</p>
+        <p class="step">The invisible and insidious gender classification causes much struggle for those who do not identify as neither male nor female. Every binary gender choice they are forced to make is a self-erasing experience. This century-old practice also puts to question the accuracy of the gender data we collect. Even if I succeeded in visualizing gender disparity innovatively, if the data itself inaccurately captures the gender distributions, it does little to deepen our understanding of gender nor further the conversation around gender equality.</p>
         <div class="sectionHeading">
         <h2>How much do we really know about gender?</h2>
         </div>
         <p class="step">In fact, the rigid binary gender system makes our understanding of gender faulty and unscientific.  By now, a fair amount of people believe that gender is not strictly binary, but how many of us truly  know the level of its complexity?  The visualization featured in the September 2017 issue of <em>Scientific American</em> illustrates just how intricate gender and sex are.</p>
         <figure id="diagram">
-          <img src="Images/scientificAmerican.jpg" width="100%"/>
-          <figcaption>Screenshot of <em>Beyond XX and XY</em> diagram.</figcaption>
+          <a href="Images/scientificAmerican.jpg"><img src="Images/scientificAmerican.jpg" width="100%"/></a>
+          <figcaption>"Beyond XX and XY" <em>Scientific American</em></figcaption>
         </figure>
         <p class="step">To create the diagram, Amanda Montañez, a designer for the publication, began working by rejecting much of the existing data and research about sex and gender based on flawed categories or flawed collection practices.  <em>Beyond XX and XY</em> uses a color spectrum to represent the sex spectrum, a vertical axis to represent change over time, and branching arrows to connect to text blocks that provide additional contextual information.  The diagram excellently disproves the scientifically incorrect idea that there are only two sexes, and even that the concepts of sex and gender are fully distinguishable.  Montañez reversed the general approach to data visualization of reducing complexity, and created an intentionally complex, nuanced and just diagram that challenges the simple, oppressive ideas.</p>
         <p class="step">A visualization like this makes us realize that we don't know enough about gender to abstract the gender data properly. We first need to spend more time exploring and learning the complexity of gender and to familiarize ourselves with it.</p>
@@ -141,7 +127,7 @@
         <div class="sectionHeading">
         <h2>Acknowledging and reconciling the regional tensions</h2>
         </div>
-        <p class="step">While the Global North pushes the boundary of gender definition, in the rest of the world gender is still very much a social construct. And gender inequalities occur as a result.</p>
+        <p class="step">While the Global North pushes the boundary of gender definition, in the rest of the world gender is still very much a <span class="yellow">social construct</span>. And gender inequalities occur as a result.</p>
         <p class="step">Girls in most parts of the world are twice less likely than boys of the same age to have access to the internet or digital skills.</p>
         <p class="step">HIV epidemic is influenced by gender inequalities as girls are not as likely to be educated about protection against sexually transmitted diseases.</p>
         <p class="step">As climate change exacerbates and access to clean water becomes scarcer, more girls will likely miss out on school because water fetching duty disproportionately falls on women and girls.</p>
@@ -155,6 +141,10 @@
         <p>To play on the quote by Georgia O'Keeffe, to see, to understand and to visualize takes time. As the artist repeatedly and continuously confronted her subjects until she gained familiarity with them, we need to engage in ongoing, inclusive discussions about gender so that we can better understand it.</p>
         <p>We have just scratched the surface of comprehending gender and its heterogeneity. Underneath the epidermis are idiosyncrasies that enrich our world.</p>
         </div>
+      </section>
+      <section id="footer">
+        <hr/>
+        <p>For the theoretical frameworks that inspired and informed this project, please refer to the bibliography in my white paper.</p>
       </section>
     </main>
   </div>
