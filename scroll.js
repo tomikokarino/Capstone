@@ -32,12 +32,6 @@ let evocativeStep = evocative.selectAll(".step");
 // Bubble chart scroll
 let bubbleChartText = main.select("#bubbleChart-text");
 let bubbleStep = bubbleChartText.selectAll(".step");
-
-// let bubbleChart = main.select("#bubbleChart");
-// let bubbleViz = bubbleChart.select("#bubbleViz");
-// let bChartContainer = bubbleViz.select(".chart-container");
-// let bTextContainer = bubbleChart.select("#bubbleChart-text");
-// let bubbleStep = bTextContainer.selectAll(".step");
 // Video scroll
 let video = main.select("#video");
 let videoStep = video.selectAll(".step");
@@ -72,10 +66,6 @@ function handleResize() {
     treeMapViz
         .style("height", treeMapHeight + "px")
         .style("top", graphicMarginTop + "px");
-
-    // bubbleViz
-    //     .style("height", bubbleVizHeight + "px")
-    //     .style("top", graphicMarginTop + "px");
     
     guaridanImg
         .style("height", guardianHeight + "px")
@@ -84,21 +74,16 @@ function handleResize() {
 
     // tell scrollama to update new element dimensions
     treeMapScroller.resize();
-    // bubbleScroller.resize();
     guardianScroller.resize();
 }
 
 // stepEnter
 function handleStepEnter(response) {
-    // response = { element, direction, index }
-    // add to color to current step
     response.element.classList.add("is-active");
 }
 
 // stepExit
 function handleStepExit(response) {
-    // response = { element, direction, index }
-    // remove color from current step
     response.element.classList.remove("is-active");
 }
 
@@ -138,12 +123,12 @@ function init() {
     treeMapStep.style("padding-bottom", stepHeight + "px");
     treeMapScroller
         .setup({
-            container: '#treeMap', // our outermost scrollytelling element
-            treeMapViz: '#treeMapViz', // the graphic
-            textContainer: '#treeMap-text', // the step container
-            step: '#treeMap #treeMap-text .step', // the step elements
-            offset: 0.4, // set the trigger to be 1/2 way down screen
-            debug: false, // display the trigger offset for testing
+            container: '#treeMap',
+            treeMapViz: '#treeMapViz', 
+            textContainer: '#treeMap-text',
+            step: '#treeMap #treeMap-text .step',
+            offset: 0.4,
+            debug: false,
         })
         .onStepEnter(handleStepEnter);
 
@@ -152,9 +137,9 @@ function init() {
     evocativeStep.style("padding-bottom", stepHeight + "px");
     evocativeScroller
     .setup({
-        step: '#evocative .step', // the step elements
-        offset: 0.4, // set the trigger to be 1/2 way down screen
-        debug: false, // display the trigger offset for testing
+        step: '#evocative .step',
+        offset: 0.4,
+        debug: false,
     })
     .onStepEnter(handleStepEnter);
 
@@ -163,12 +148,9 @@ function init() {
     bubbleStep.style("padding-bottom", stepHeight + "px");
     bubbleScroller
         .setup({
-            // container: '#bubbleChart', // our outermost scrollytelling element
-            // bubbleViz: '#bubbleViz', // the graphic
-            // bubbleChartText: '#bubbleChart-text', // the step container
-            step: '#bubbleChart-text .step', // the step elements
-            offset: 0.4, // set the trigger to be 1/2 way down screen
-            debug: false, // display the trigger offset for testing
+            step: '#bubbleChart-text .step',
+            offset: 0.4,
+            debug: false,
         })
         .onStepEnter(handleStepEnter);
      
@@ -192,12 +174,12 @@ function init() {
 
     guardianScroller
         .setup({
-            container: '#guardian', // our outermost scrollytelling element
-            bubbleViz: '#guardianImg', // the graphic
-            bTextContainer: '#guardianText', // the step container
-            step: '#guardian #guardianText .step', // the step elements
-            offset: 0.4, // set the trigger to be 1/2 way down screen
-            debug: false, // display the trigger offset for testing
+            container: '#guardian', 
+            bubbleViz: '#guardianImg',
+            bTextContainer: '#guardianText', 
+            step: '#guardian #guardianText .step',
+            offset: 0.4, 
+            debug: false, 
         })
         .onStepEnter(handleStepEnter);
 
